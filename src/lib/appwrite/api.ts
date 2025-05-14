@@ -1,8 +1,6 @@
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types"
 import { account, storage, appwriteConfig, avatars, databases } from "./config"
 import { ID, Query } from "appwrite"
-import { log } from "console"
-import { data } from "react-router-dom"
 
 export async function createUserAccount(user: INewUser) {
   try {
@@ -162,11 +160,9 @@ export async function uploadFile(file: File) {
 
 export function getFilePreview(fileId: string) {
   try {
-    const filePreview = storage.getFilePreview(
+    const filePreview = storage.getFileView(
       appwriteConfig.bucketId,
       fileId,
-      2000,
-      2000,
     )
 
     if (!filePreview) throw Error;

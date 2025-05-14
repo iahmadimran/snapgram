@@ -4,10 +4,7 @@ import { useGetCurrentUser } from "@/lib/react-query/queries"
 import { Models } from "appwrite"
 
 function Saved() {
-  const { data: currentUser } = useGetCurrentUser()
-
-  console.log({currentUser});
-  
+  const { data: currentUser } = useGetCurrentUser()  
 
   const savePosts = currentUser?.save.map((savePost: Models.Document) => ({
     ...savePost.post,

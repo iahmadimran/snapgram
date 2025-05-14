@@ -2,23 +2,47 @@ import Loader from '@/components/shared/Loader'
 import PostStats from '@/components/shared/PostStats'
 import { Button } from '@/components/ui/button'
 import { useAuthContext } from '@/context/AuthContext'
-import { useGetPostById } from '@/lib/react-query/queries'
+import { useDeletePost, useDeleteSavedPost, useGetCurrentUser, useGetPostById } from '@/lib/react-query/queries'
 import { multiFormatDateString } from '@/lib/utils'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 function PostDetails() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const { data: post, isPending } = useGetPostById(id || '')
   const { user } = useAuthContext()
+  const { mutate: deleteSavedPost, isPending: isDeletingSaved } = useDeleteSavedPost()
+
+  const { data: currentUser } = useGetCurrentUser();
+  const savedPostRecord = currentUser?.save.find((record: Models.Document) => record.post?.$id === post?.$id);
+
+  const { mutate: deletePost } = useDeletePost()
 
   const handleDeletePost = () => {
-
+    deletePost({ postId: id, imageId: post?.imageId });
+    navigate(-1);
+    deleteSavedPost(savedPostRecord.$id)
   }
 
 
   return (
     <div className='post_details-container'>
-      {isPending ? <Loader /> : (
+      <div className="hidden md:flex max-w-5xl w-full">
+        <Button
+          onClick={() => navigate(-1)}
+          variant="ghost"
+          className="shad-button_ghost">
+          <img
+            src={"/assets/icons/back.svg"}
+            alt="back"
+            width={24}
+            height={24}
+          />
+          <p className="small-medium lg:base-medium">Back</p>
+        </Button>
+      </div>
+
+      {isPending || !post ? <Loader /> : (
         <div className="post_details-card ">
           <img
             src={post?.imageUrl} alt="Images cannot be shown because I am using free plan of appwrite and I can't afford paid version now." className='post_details-img' />
@@ -75,7 +99,7 @@ function PostDetails() {
             </div>
 
             <div className='w-full'>
-                <PostStats post={post} userId={user.id} />
+              <PostStats post={post || ""} userId={user.id} />
             </div>
 
           </div>
