@@ -16,11 +16,7 @@ A full-stack social media application where users can share image-based posts ("
 - **Frontend**: React, Tailwind CSS  
 - **Backend-as-a-Service**: Appwrite (Auth, DB, Storage)  
 - **Data Fetching**: React Query (Caching, Mutations, Infinite Scroll)  
-- **Deployment**: Vercel (or your choice of hosting)
-
-## 📷 Screenshots
-
-> _(Add some UI screenshots here for visual impact)_
+- **Deployment**: Vercel
 
 ## 🧪 Installation
 
