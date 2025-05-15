@@ -13,7 +13,7 @@ A full-stack social media application where users can share image-based posts ("
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React, Tailwind CSS  
+- **Frontend**: React, Typescript, Shad CN, Tailwind CSS  
 - **Backend-as-a-Service**: Appwrite (Auth, DB, Storage)  
 - **Data Fetching**: React Query (Caching, Mutations, Infinite Scroll)  
 - **Deployment**: Vercel
