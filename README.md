@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+# 📸 Snapgram
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack social media application where users can share image-based posts ("snaps"), like and comment on others’ content, and interact in real time — all built with a modern tech stack.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧑‍💻 **Authentication & Authorization** – Secure user sign-up, login, and session management via Appwrite.
+- 🖼️ **Image Uploads** – Users can post and view snaps with image storage handled by Appwrite’s cloud storage.
+- ⚡ **Real-Time Feed** – Posts update instantly using Appwrite's real-time database features.
+- 🔁 **Infinite Scrolling** – Smooth, performant scrolling implemented with React Query.
+- 📦 **Data Caching & Mutations** – Efficient state and data handling using React Query for seamless UX.
+- 📱 **Responsive UI** – Fully mobile-friendly layout built with Tailwind CSS and custom components.
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend**: React, Tailwind CSS  
+- **Backend-as-a-Service**: Appwrite (Auth, DB, Storage)  
+- **Data Fetching**: React Query (Caching, Mutations, Infinite Scroll)  
+- **Deployment**: Vercel (or your choice of hosting)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 📷 Screenshots
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> _(Add some UI screenshots here for visual impact)_
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧪 Installation
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+```bash
+git clone https://github.com/iahmadimran/snapgram.git
+cd snapgram
+npm install
+npm run dev
+
