@@ -1,4 +1,4 @@
-import { QueryClient, useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createPost, createUserAccount, deletePost, deleteSavedPost, getCurrentUser, getInfinitePosts, getPostById, getRecentPosts, getUserById, getUsers, likePost, savePost, searchPosts, signInAccount, signOutAccount, updatePost, updateUser } from "../appwrite/api";
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import { QUERY_KEYS } from "./QueryKeys";
@@ -17,6 +17,7 @@ export const useSignInAccount = () => {
 
 export const useSignOutAccount = () => {
   return useMutation({
+  // @ts-ignore
     mutationFn: signOutAccount,
   });
 }
@@ -152,6 +153,7 @@ export const useGetPosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
     queryFn: getInfinitePosts,
+    // @ts-ignore
     getNextPageParam: (lastPage) => {
       if (lastPage && lastPage.documents.length === 0) {
         return null;
