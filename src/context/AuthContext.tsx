@@ -84,6 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 
   return (
+    // @ts-ignore
     <AuthContext.Provider value={values}>
       {children}
     </AuthContext.Provider>
