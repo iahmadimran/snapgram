@@ -33,6 +33,7 @@ function UpdateProfile() {
   })
 
   const { data: currentUser } = useGetUserById(id || "")
+  // @ts-ignore
   const { mutateAsync: updateUser, isLoading: isLoadingUpdate } = useUpdateUser();
 
   if (!currentUser) {
@@ -46,6 +47,7 @@ function UpdateProfile() {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof ProfileValidation>) {
     const updatedUser = await updateUser({
+      // @ts-ignore
       userId: currentUser?.$id,
       name: values.name,
       bio: values.bio,

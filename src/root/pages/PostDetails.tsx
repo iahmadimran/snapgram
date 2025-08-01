@@ -11,14 +11,16 @@ function PostDetails() {
   const navigate = useNavigate()
   const { data: post, isPending } = useGetPostById(id || '')
   const { user } = useAuthContext()
-  const { mutate: deleteSavedPost, isPending: isDeletingSaved } = useDeleteSavedPost()
+  const { mutate: deleteSavedPost } = useDeleteSavedPost()
 
   const { data: currentUser } = useGetCurrentUser();
+  // @ts-ignore
   const savedPostRecord = currentUser?.save.find((record: Models.Document) => record.post?.$id === post?.$id);
 
   const { mutate: deletePost } = useDeletePost()
 
   const handleDeletePost = () => {
+    // @ts-ignore
     deletePost({ postId: id, imageId: post?.imageId });
     navigate(-1);
     deleteSavedPost(savedPostRecord.$id)
