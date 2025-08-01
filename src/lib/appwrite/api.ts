@@ -68,7 +68,6 @@ export async function getAccount() {
     const currentAccount = await account.get();
 
     return currentAccount;
-
   } catch (error) {
     console.log(error);
   }
@@ -175,7 +174,7 @@ export function getFilePreview(fileId: string) {
 
 export async function deleteFile(fileId: string) {
   try {
-    const file = await storage.deleteFile(
+    await storage.deleteFile(
       appwriteConfig.bucketId,
       fileId
     )

@@ -8,6 +8,8 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "baseUrl": ".",
+    "skipLibCheck": true,
+    "noEmitOnError": false,
     "paths": {
       "@/*": ["./src/*"]
     }
